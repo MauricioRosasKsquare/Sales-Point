@@ -1,0 +1,19 @@
+{
+  "name": "salespoint",
+  "version": "1.0.0",
+  "description": "Sales Point",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js"
+  },
+  "author": "Mauricio Rosas & Roger Osalde",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
