@@ -9,26 +9,25 @@ import { useState, useEffect } from 'react';
 function App() {
 
   const  [products, setProducts]  = useState([]);
+  const [isaddedProduct, setisAddedProduct] = useState(0)
 
   useEffect(() => {
     axios.get("http://localhost:5000/products")
     .then((res) => {
       setProducts(res.data)
     });
-  }, []);
+  }, [isaddedProduct]);
 
-
-  
   
   const [cartItems, setCartItems] = useState([]);
  
 
   const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x._id === product._id);
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+          x._id === product._id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
@@ -36,13 +35,13 @@ function App() {
     }
   };
   const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x._id === product._id);
     if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
+      setCartItems(cartItems.filter((x) => x._id !== product._id));
     } else {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+          x._id === product._id ? { ...exist, qty: exist.qty - 1 } : x
         )
       );
     }
@@ -51,7 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header countCartItems={cartItems.length}></Header>
+      <Header onNew={ () => setisAddedProduct(isaddedProduct+1)} countCartItems={cartItems.length}></Header>
       <div className="row">
         <Main products={products} onAdd={onAdd}></Main>
         <Basket

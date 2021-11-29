@@ -1,31 +1,35 @@
-import React from 'react';
+import {useState} from "react";
+import  ModalAdd  from './Modal'
 
 export default function Header(props) {
 
+  const [modalShow, setModalShow] = useState(false);
+
   return (
+    <>
     <header className="block row center">
       <div>
-        <a href="/">
-          <h1>Roses Sales Point</h1>
-        </a>
+        <h1>Roses Sales Point</h1>
       </div>
       <div>
-        <a href="/">
+        
           Cart{' '}
           {props.countCartItems ? (
             <button className="badge">{props.countCartItems}</button>
           ) : (
             ''
           )}
-        </a>{' '}
+        {' '}
         <div>
-          <button className="button">
-            Go to Dashboard
+          <button onClick={() => setModalShow(true)} className="button">
+            Add Product
           </button>
         </div>
       </div>
     </header>
+    
+    <ModalAdd onNew={props.onNew} show={modalShow}  onHide={() => setModalShow(false)} />
+
+    </>
   );
 }
-
-//onClick={() => { handleGoDashboard()}}

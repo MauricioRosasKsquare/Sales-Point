@@ -67,3 +67,11 @@ button.badge {
   color: #ffffff;
   width: 1.5rem;
 }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  column-gap: 60px;
+  row-gap: 3em;
+}
