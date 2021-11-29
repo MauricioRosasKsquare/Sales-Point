@@ -33,14 +33,15 @@ const createProduct = (req, res) => {
 
 const updateProduct = (req, res) => {
   const id = req.params.id
-  const description = req.body.description
+  const name = req.body.name
+  const price = req.body.price
   if(id.length > 24){
     return res.status(500).json({
       message: 'Invalid id'
     })
   }
 
-  Product.findOneAndUpdate( {_id: {$eq : id} },{description: description}, (error, match) => {
+  Product.findOneAndUpdate( {_id: {$eq : id} },{name: name, price: price}, (error, match) => {
     
     if (error){
       return res.status(500).json({
