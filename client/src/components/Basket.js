@@ -1,15 +1,35 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function Basket(props) {
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.16;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  const totalPrice = itemsPrice + taxPrice + shippingPrice;
+  const totalPrice = (itemsPrice + taxPrice + shippingPrice);
 
   const[amount, setAmound] = useState('');
 
+  
+
+  function handleBuy(){
+
+    axios.post('http://localhost:5000/tickets', {
+          products: cartItems,
+          total: totalPrice,
+          date: Date.now(),
+          status: "Active"
+        })
+        .then(function (response) {
+
+            alert('The sell was successful !')
+            onRemove({},true)
+              })
+        .catch(function (error) {
+            console.log(error);
+        }); 
+  }
 
   return (
     <aside className="block col-1">
@@ -71,17 +91,17 @@ export default function Basket(props) {
               </div>
             </div>
 
-            <div className="row">
+            {((Math.round((amount - totalPrice )* 100) / 100 ) >= 0)  ? <div className="row">
               <div className="col-2">
                 <strong>Change</strong>
               </div>
               <div className="col-1 text-right">
-                <strong>${ amount - totalPrice.toFixed(2)}</strong>
+                <strong>${ (amount - totalPrice).toFixed(2) }</strong>
               </div>
-            </div>
+            </div> : <></>}
             <hr />
             <div className="row">
-              <button onClick={() => alert('The Sell was Successful !')}>
+              <button disabled={ !((Math.round((amount - totalPrice )* 100) / 100 ) >= 0) } onClick={handleBuy}>
                 Buy
               </button>
             </div>
@@ -90,4 +110,6 @@ export default function Basket(props) {
       </div>
     </aside>
   );
+
+  
 }

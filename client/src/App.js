@@ -9,14 +9,18 @@ import { useState, useEffect } from 'react';
 function App() {
 
   const  [products, setProducts]  = useState([]);
+  const  [mount, setMount]  = useState(false);
   const [isaddedProduct, setisAddedProduct] = useState(0)
 
   useEffect(() => {
+    if(!mount) {
+      setMount(true);
+   }
     axios.get("http://localhost:5000/products")
     .then((res) => {
       setProducts(res.data)
     });
-  }, [isaddedProduct]);
+  }, [ mount , isaddedProduct ]);
 
   
   const [cartItems, setCartItems] = useState([]);
@@ -34,8 +38,11 @@ function App() {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
-  const onRemove = (product) => {
+  const onRemove = (product, sell) => {
     const exist = cartItems.find((x) => x._id === product._id);
+    if (sell){
+      return setCartItems([]);
+    }
     if (exist.qty === 1) {
       setCartItems(cartItems.filter((x) => x._id !== product._id));
     } else {

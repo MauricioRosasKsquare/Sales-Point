@@ -15,6 +15,23 @@ const getAllTickets = (req, res) => {
     })
 };
 
+const createTicket = (req, res) => {
+  const { body } = req;
+  const newTicket = new Ticket(body);
+  newTicket.save(function(error, newTicket){
+    if (error){
+      return res.status(500).json({
+        message: 'Error creating Ticket'
+      })
+    }
+  });
+  return res.send({
+    message: 'Ticket successfully created!!!'
+  });
+  
+};
+
 module.exports = {
-    getAllTickets
+    getAllTickets,
+    createTicket
 };
