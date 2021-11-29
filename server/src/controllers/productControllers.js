@@ -1,6 +1,6 @@
 const  Product  = require('../models/Product');
 
-const getAll = (req, res) => {
+const getAllProducts = (req, res) => {
   Product.find({}, (error, products) => {
     if (error){
       return res.status(500).json({
@@ -89,7 +89,7 @@ const deleteProduct = (req, res) => {
 };
 
 module.exports = {
-  getAll,
+  getAllProducts,
   createProduct,
   updateProduct,
   deleteProduct,
