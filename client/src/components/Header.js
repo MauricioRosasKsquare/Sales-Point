@@ -1,9 +1,11 @@
 import { useState } from "react";
-import  ModalAdd  from './Modal'
+import  ModalAdd  from './ModalAdd'
+import ModalTickets from "./ModalTickets";
 
 export default function Header(props) {
 
-  const [modalShow, setModalShow] = useState(false);
+  const [modalAddShow, setModalAddShow] = useState(false);
+  const [modalTicketsShow, setModalTicketsShow] = useState(false);
 
   return (
     <>
@@ -15,6 +17,9 @@ export default function Header(props) {
         <button onClick={props.dash} className="button"> {props.view ? "See products" : "See dashboard"}</button>
       </div>
       <div>
+        <button onClick={() => setModalTicketsShow(true)} className="button">See Tickets</button>
+      </div>
+      <div>
         
           Cart{' '}
           {props.countCartItems ? (
@@ -24,14 +29,14 @@ export default function Header(props) {
           )}
         {' '}
         <div>
-          <button onClick={() => setModalShow(true)} className="button">
+          <button onClick={() => setModalAddShow(true)} className="button">
             Add Product
           </button>
         </div>
       </div>
     </header>
-    
-    <ModalAdd onNew={props.onNew} show={modalShow}  onHide={() => setModalShow(false)} />
+    <ModalTickets show={modalTicketsShow}  onHide={() => setModalTicketsShow(false)} />
+    <ModalAdd onNew={props.onNew} show={modalAddShow}  onHide={() => setModalAddShow(false)} />
 
     </>
   );
