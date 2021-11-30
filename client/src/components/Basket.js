@@ -14,7 +14,7 @@ export default function Basket(props) {
 
   function handleBuy(){
 
-    axios.post('http://localhost:5000/tickets', {
+    axios.post('https://backend-sales-point.herokuapp.com/tickets', {
           products: cartItems,
           total: totalPrice,
           date: Date.now(),

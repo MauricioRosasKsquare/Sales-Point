@@ -25,7 +25,7 @@ function ModalAdd( props ){
 
         e.preventDefault();
         
-        axios.post('http://localhost:5000/products', { 
+        axios.post('https://backend-sales-point.herokuapp.com/products', { 
             name: productName,
             price: productPrice })
         .then(function (response) {

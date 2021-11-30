@@ -21,14 +21,14 @@ function ModalTickets( props ){
     const [count, setCount] = useState(0)
     useEffect(() => {
 
-        axios.get("http://localhost:5000/tickets")
+        axios.get("https://backend-sales-point.herokuapp.com/tickets")
         .then((res) => {
             setTickets(res.data)
         });
     }, [count])
 
     function handleCancel(id){
-        axios.patch("http://localhost:5000/tickets", {id:id});
+        axios.patch("https://backend-sales-point.herokuapp.com/tickets", {id:id});
         setCount(count+1)
         alert("Cancelation in process (takes around 30 sec) or refresh the page" )
     }

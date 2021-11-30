@@ -18,12 +18,12 @@ function App() {
     if(!mount) {
       setMount(true);
    }
-    axios.get("http://localhost:5000/products")
+    axios.get("https://backend-sales-point.herokuapp.com/products")
     .then((res) => {
       setProducts(res.data)
     });
 
-    axios.get("http://localhost:5000/tickets")
+    axios.get("https://backend-sales-point.herokuapp.com/tickets")
     .then((res) => {
         setTickets(res.data)
     });
