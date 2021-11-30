@@ -10,7 +10,8 @@ function App() {
 
   const  [products, setProducts]  = useState([]);
   const  [mount, setMount]  = useState(false);
-  const [isaddedProduct, setisAddedProduct] = useState(0)
+  const  [isaddedProduct, setIsAddedProduct] = useState(0)
+  const  [isDashView, setIsDashView] = useState(false)
 
   useEffect(() => {
     if(!mount) {
@@ -57,14 +58,20 @@ function App() {
 
   return (
     <div className="App">
-      <Header onNew={ () => setisAddedProduct(isaddedProduct+1)} countCartItems={cartItems.length}></Header>
+      <Header view={isDashView} dash={() => setIsDashView(!isDashView)} onNew={ () => setIsAddedProduct(isaddedProduct+1)} countCartItems={cartItems.length}></Header>
       <div className="row">
-        <Main products={products} onAdd={onAdd}></Main>
-        <Basket
-          cartItems={cartItems}
-          onAdd={onAdd}
-          onRemove={onRemove}
-        ></Basket>
+        {!isDashView ? <> 
+                        <Main products={products} onAdd={onAdd}></Main>
+                        <Basket
+                          cartItems={cartItems}
+                          onAdd={onAdd}
+                          onRemove={onRemove}
+                        />
+                      </>
+                      :
+                      <>
+                      </>
+        }
       </div>
     </div>
   );

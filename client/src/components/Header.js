@@ -12,6 +12,9 @@ export default function Header(props) {
         <h1>Roses Sales Point</h1>
       </div>
       <div>
+        <button onClick={props.dash} className="button"> {props.view ? "See products" : "See dashboard"}</button>
+      </div>
+      <div>
         
           Cart{' '}
           {props.countCartItems ? (
