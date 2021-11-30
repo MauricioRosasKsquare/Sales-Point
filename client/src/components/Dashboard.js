@@ -28,11 +28,9 @@ function Dashboard( { tickets } ) {
     // tickets.map(ticket =>{
     //     ticket.products.map(product =>{
             
-    //         if(sellersStats.find( {name: product.name})){
+    //         sellersStats.find( {name: product.name}).then(res => {})
                 
-    //         }else{
-    //             sellersStats.push(product.name)
-    //         }
+            
     //     })
     // })
     
