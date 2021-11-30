@@ -1,5 +1,7 @@
 import React from 'react';
-import Product from './Product';
+//import Product from './Product';
+import Pagination from './Pagination';
+
 
 export default function Main(props) {
   const { products, onAdd } = props;
@@ -7,10 +9,9 @@ export default function Main(props) {
     <main className="block col-2">
       <h2>Products</h2>
       <div className="wrapper">
-        {products.map((product) => (
-          <Product key={product._id} product={product} onAdd={onAdd}></Product>
-        ))}
+      <Pagination products={products} onAdd={onAdd} />
       </div>
     </main>
   );
 }
+//<Product products={products} onAdd={onAdd} />
