@@ -1,4 +1,3 @@
-
 function noEmpty(req, res, next){
 
     const name = (req.body.name !== undefined) ? req.body.name.trim() : " ";  

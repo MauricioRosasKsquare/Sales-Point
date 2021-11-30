@@ -4,7 +4,6 @@ const url = 'mongodb+srv://admin:9FqpCWGLqBqkVZzv@prueba.nz1kw.mongodb.net/myFir
 
 mongoose.connect(url)
 
-
 const db = mongoose.connection
 
 db.on('error', console.error.bind(console, 'Connection error MongoDB'))

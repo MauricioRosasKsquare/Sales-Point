@@ -1,5 +1,4 @@
-const  Ticket  = require('../models/Ticket');
-
+const Ticket = require('../models/Ticket');
 
 const getAllTickets = (req, res) => {
     Ticket.find({}, (error, tickets) => {
@@ -31,7 +30,15 @@ const createTicket = (req, res) => {
   
 };
 
+const patchTicket = (req, res) => {
+  Ticket.findOneAndUpdate({_id: {$eq : req.body.id}}, {status:"Canceled"})
+  .catch((error) => {  
+      throw new Error('Error updating status');  
+  })
+};
+
 module.exports = {
     getAllTickets,
-    createTicket
+    createTicket,
+    patchTicket
 };

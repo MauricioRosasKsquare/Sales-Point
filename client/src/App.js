@@ -1,10 +1,8 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Basket from './components/Basket';
 import Header from './components/Header';
 import Main from './components/Main';
-import Basket from './components/Basket';
-
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-
 
 function App() {
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 function Pagination(props) {
   const data = props.products;
 

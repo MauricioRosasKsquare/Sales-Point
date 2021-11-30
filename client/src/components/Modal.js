@@ -1,6 +1,6 @@
-import Modal from "react-modal"
-import {useState} from "react";
+import { useState } from "react";
 import axios from 'axios';
+import Modal from "react-modal"
 
 Modal.setAppElement('#root')
 const customStyles = {
