@@ -75,3 +75,7 @@ button.badge {
   column-gap: 60px;
   row-gap: 3em;
 }
+
+.wrapper2 {
+  display: grid;
+}
