@@ -24,20 +24,17 @@ function Dashboard( { tickets } ) {
         return [totalCancel, totalCancelLost,totalSell,totalEarned]
     })
 
-    const asd = {
-        name: product.name
-    }
 
-    tickets.map(ticket =>{
-        ticket.products.map(product =>{
+    // tickets.map(ticket =>{
+    //     ticket.products.map(product =>{
             
-            if(sellersStats.find( {name: product.name})){
+    //         if(sellersStats.find( {name: product.name})){
                 
-            }else{
-                sellersStats.push(product.name)
-            }
-        })
-    })
+    //         }else{
+    //             sellersStats.push(product.name)
+    //         }
+    //     })
+    // })
     
     
     
