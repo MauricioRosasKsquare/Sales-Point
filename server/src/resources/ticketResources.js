@@ -4,6 +4,6 @@ const TicketResources = express.Router();
 
 TicketResources.get('/tickets', TicketControllers.getAllTickets);
 TicketResources.post('/tickets', TicketControllers.createTicket);
-TicketResources.patch('/tickets/:id', TicketControllers.patchTicket);
+TicketResources.patch('/tickets', TicketControllers.patchTicket);
 
 module.exports = TicketResources;

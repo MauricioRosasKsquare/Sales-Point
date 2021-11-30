@@ -31,11 +31,9 @@ const createTicket = (req, res) => {
 };
 
 const patchTicket = (req, res) => {
-  Ticket.findOneAndUpdate({_id: {$eq : req.body.id}}, {status:"Canceled"})
-  .catch((error) => {  
-      throw new Error('Error updating status');  
+  Ticket.findOneAndUpdate({_id: req.body.id}, {$set:{status:"Canceled"}}, {}, (err,doc) =>{
   })
-};
+}; 
 
 module.exports = {
     getAllTickets,

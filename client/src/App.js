@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Basket from './components/Basket';
+import Dashboard from './components/Dashboard';
 import Header from './components/Header';
 import Main from './components/Main';
+
 
 function App() {
 
@@ -10,6 +12,7 @@ function App() {
   const  [mount, setMount]  = useState(false);
   const  [isaddedProduct, setIsAddedProduct] = useState(0)
   const  [isDashView, setIsDashView] = useState(false)
+  const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
     if(!mount) {
@@ -19,6 +22,12 @@ function App() {
     .then((res) => {
       setProducts(res.data)
     });
+
+    axios.get("http://localhost:5000/tickets")
+    .then((res) => {
+        setTickets(res.data)
+    });
+
   }, [ mount , isaddedProduct ]);
 
   
@@ -67,8 +76,8 @@ function App() {
                         />
                       </>
                       :
-                      <>
-                      </>
+                      
+                      <Dashboard tickets={tickets} />
         }
       </div>
     </div>
