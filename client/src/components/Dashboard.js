@@ -1,4 +1,4 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 function Dashboard( { tickets } ) {
     
@@ -36,7 +36,7 @@ function Dashboard( { tickets } ) {
     })
 
     sellersStats.forEach(product =>{
-        let exist = sellersStatsPro.findIndex( (obj) => obj.name == product.name)
+        let exist = sellersStatsPro.findIndex( (obj) => obj.name === product.name)
         if(exist === -1){
             sellersStatsPro.push(product)
         }else{
