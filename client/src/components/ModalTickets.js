@@ -36,7 +36,7 @@ function ModalTickets( props ){
     return(
         <div className="scroll-component">
             <Modal shouldCloseOnEsc={true} isOpen={props.show} onRequestClose={ props.onHide } style={customStyles}>
-            {tickets.map((ticket, i) => {
+            {tickets !== "There are no ticket yet" ? tickets.map((ticket, i) => {
                 return( 
                 <div  key={i} style={{borderStyle:"solid", color: ticket.status !=="Canceled" ? "black" : "red"  ,borderColor: ticket.status !=="Canceled" ? "black" : "red", marginTop:"10px"}}>
                     <h1 style={{textDecoration:ticket.status ==="Canceled" ? "line-through" :"none"}}>{ticket.status !=="Canceled" ? `Ticket ${i+1}` : `Ticket ${i+1} Canceled`}</h1>
@@ -51,7 +51,7 @@ function ModalTickets( props ){
                 </div>
                 )
                 
-            } )}
+            } ) : <h1>{tickets}</h1>}
             
             </Modal>
         </div>
