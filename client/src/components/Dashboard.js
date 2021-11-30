@@ -29,9 +29,11 @@ function Dashboard( { tickets } ) {
     })
 
     tickets.map(ticket =>{
-        ticket.products.forEach(product =>{
-            sellersStats.push({name:product.name, qty:product.qty })
-        })
+        if(ticket.status !== "Canceled"){
+            ticket.products.forEach(product =>{
+                sellersStats.push({name:product.name, qty:product.qty })
+            })
+        }
         return true         
     })
 
